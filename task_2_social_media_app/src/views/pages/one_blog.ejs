@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Include head partial -->
+  <%- include('../partials/head'); %>
+
+
+</head>
+
+<body class="container py-4">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+    <main class="flex-grow-1">
+        <!-- Main Content -->
+        <div class="container-lg px-4 py-5 bg-light rounded-3 shadow-sm">
+            <h1 class="display-4 fw-bold mb-3 text-primary"><%= blog.title %></h1>
+            <strong class="text-muted mb-3">
+            <%= new Date(blog.published_date).toLocaleDateString('en-GB', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            }) %>
+            </strong>
+
+
+        </div>
+        <div class="container-lg px-4 py-5 bg-light rounded-3 shadow-sm">
+            <div class="lead mt-10">
+                <p><%= blog.content %></p>
+            </div>
+
+        </div>
+
+    </main>
+
+
+  <footer class="mt-5">
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

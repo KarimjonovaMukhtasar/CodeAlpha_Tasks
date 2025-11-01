@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h1>New Article</h1>
+
+
+      <form method="POST" action="/blog">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Title" name="title">
+        </div>
+        <div class="mb-3">
+          <label for="published_date" class="form-label">Published Date</label>
+          <input type="date" class="form-control" id="published_date" placeholder="Published date" name="published_date">
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">Content:</label>
+         <textarea id="content" class="form-control"  name="content" rows="4" cols="50">
+         At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+         </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

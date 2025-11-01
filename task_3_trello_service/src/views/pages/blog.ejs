@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Include head partial -->
+  <%- include('../partials/head'); %>
+
+
+</head>
+
+<body class="container py-4">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+  <main>
+    <!-- ✅ Replaced .jumbotron with modern Bootstrap 5 utility classes -->
+    <div class="bg-light p-5 rounded-3 mb-4">
+      <h1 class="display-5 fw-bold mb-3">This is Super App Blog</h1>
+
+      <% if (blogs.length != 0) { %>
+        <ol class="list-group">
+          <% blogs.forEach(function(blog) { %>
+            <a href="/blog/<%= blog._id %>" class="text-decoration-none fw-semibold">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <!-- Title and Date on Left -->
+                <div class="d-flex flex-column ">
+                  <strong class="mb-1"><%= blog.title %></strong>
+                  <small class="text-muted">
+                    <%= new Date(blog.published_date).toLocaleDateString('en-GB', {
+                      year: 'numeric', month: 'long', day: 'numeric'
+                    }) %>
+                  </small>
+                </div>
+
+                <div class="d-flex flex-row">
+
+                <!-- Edit and Delete Buttons on Right -->
+                  <!-- Edit Button with Icon -->
+                  <a href="/blog/edit/<%= blog._id %>" class="btn btn-warning btn-sm me-2" title="Edit">
+                    <i class="bi bi-pencil-square"></i> Edit
+                  </a>
+
+                  <!-- Delete Button with Icon -->
+                  <form action="/blog/delete/<%= blog._id %>" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this blog?');">
+                    <button type="submit" class="btn btn-danger btn-sm" title="Delete">
+                      <i class="bi bi-trash"></i> Delete
+                    </button>
+                  </form>
+                </div>
+              </li>
+            </a>
+          <% }); %>
+        </ol>
+      <% } else { %>
+        <p class="text-muted mt-3">Hech narsa topilmadi!</p>
+      <% } %>
+    </div>
+  </main>
+
+
+  <footer class="mt-5">
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

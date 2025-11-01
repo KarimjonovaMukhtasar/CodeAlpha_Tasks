@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main>
+    <div class="bg-light p-5 rounded-3 mb-4">
+      <h1>Edit Article</h1>
+
+      <!-- Form for Editing the Blog Post -->
+      <form method="POST" action="/blog/<%= blog._id %>">
+        <!-- Title Field -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="<%= blog.title %>">
+        </div>
+
+        <!-- Published Date Field -->
+        <div class="mb-3">
+          <label for="published_date" class="form-label">Published Date</label>
+          <input type="date" class="form-control" id="published_date" placeholder="Published date" name="published_date" value="<%= blog.published_date %>">
+        </div>
+
+        <!-- Content Field (using innerHTML for the value) -->
+        <div class="mb-3">
+          <label for="content" class="form-label">Content:</label>
+          <textarea id="content" class="form-control" name="content" rows="4" cols="50"><%= blog.content %></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Update Article</button>
+      </form>
+
+    </div>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>
