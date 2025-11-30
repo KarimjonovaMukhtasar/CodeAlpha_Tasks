@@ -1,0 +1,13 @@
+<!-- <% if (message) { %>
+  <div class="alert success-alert">
+    <%= message %>
+  </div>
+<% } %> -->
+<% if (message) { %>
+  <script>
+    alert("<%= message %>");
+  </script>
+<% } %>
+<% if (redirect) { %>
+  <a href="<%= redirect %>">Go Back</a>
+<% } %> 

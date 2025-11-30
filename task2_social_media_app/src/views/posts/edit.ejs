@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Edit Post</title>
+</head>
+
+<body class="container py-4">
+
+  <%- include('../partials/navbar'); %>
+
+  <main class="mt-5">
+
+    <div class="card-main">
+
+      <h1 class="post-title text-center">Edit Post</h1>
+
+      <form action="/posts/<%= post.id %>/edit" method="POST" class="edit-form">
+
+        <label>Title</label>
+        <input type="text" name="title" value="<%= post.title %>">
+
+        <label>Content</label>
+        <textarea name="content" rows="6"><%= post.content %></textarea>
+
+        <div class="edit-buttons">
+          <button type="submit" class="btn btn-primary">Update Post</button>
+          <a href="/posts/<%= post.id %>" class="btn btn-cancel">Cancel</a>
+        </div>
+      </form>
+      <hr>
+
+      <form action="/posts/<%= post.id %>/delete" method="POST"
+        onsubmit="return confirm('Are you sure to delete this post permanently?');">
+        <button class="btn btn-delete w-100">🗑 Delete Post</button>
+      </form>
+
+    </div>
+
+  </main>
+
+  <%- include('../partials/footer'); %>
+
+</body>
+</html>

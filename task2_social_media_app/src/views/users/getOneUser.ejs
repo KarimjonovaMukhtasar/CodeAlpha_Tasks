@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+        <%- include('../partials/navbar') %>
+            <% if (message) { %>
+                <script>
+                    alert("<%= message %>");
+                </script>
+                <% } %>
+                    <main class="container">
+                        <div class="card profile-header">
+                            <div class="avatar-placeholder">
+                                <%= profileUser?.first_name ? profileUser.first_name[0] : 'U' %>
+                            </div>
+                            <h1>
+                                <%= profileUser?.first_name || '' %>
+                                    <%= profileUser?.last_name || '' %>
+                            </h1>
+                            <p style="color: gray;">@<%= profileUser?.username || 'unknown' %>
+                            </p>
+                            <% if (profileUser?.bio) { %>
+                                <p style="margin: 10px 0;">
+                                    <%= profileUser.bio %>
+                                </p>
+                                <% } %>
+
+                                    <div class="stats">
+                                        <span><strong>
+                                                <%= profileUser?.posts?.length || 0 %>
+                                            </strong> Posts</span>
+                                        <span><strong>
+                                                <%= profileUser?.followers?.length || 0 %>
+                                            </strong> Followers</span>
+                                        <span><strong>
+                                                <%= profileUser?.following?.length || 0 %>
+                                            </strong> Following</span>
+                                    </div>
+
+                                    <br>
+                                    <% if (currentUser && currentUser.id !==profileUser.id) { %>
+                                        <% if (isFollowing) { %>
+                                            <form action="/users/<%= profileUser.username %>/unfollow" method="POST">
+                                                <button class="btn-outline">Unfollow</button>
+                                            </form>
+                                            <% } else { %>
+                                                <form action="/users/<%= profileUser.username %>/follow" method="POST">
+                                                    <button>Follow</button>
+                                                </form>
+                                                <% } %>
+                                                    <% } %>
+                        </div>
+
+                        <h3>
+                            <%= profileUser?.username || '' %>'s Posts
+                        </h3>
+                        <% profileUser?.posts?.forEach(post=> { %>
+                            <div class="card">
+                                <h4><a href="/posts/<%= post.id %>">
+                                        <%= post.title %>
+                                    </a></h4>
+                                <small>
+                                    <%= new Date(post.created_at).toLocaleDateString() %>
+                                </small>
+                            </div>
+                            <% }) %>
+                    </main>
+
+                    <%- include('../partials/footer') %>
+    </body>
+
+</html>
