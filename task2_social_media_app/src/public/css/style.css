@@ -1,0 +1,518 @@
+:root {
+  --primary: #3b82f6;
+  --dark: #1f2937;
+  --light: #f3f4f6;
+  --white: #ffffff;
+  --gray: #9ca3af;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+}
+
+/* Navbar */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  margin-bottom: 16px;
+}
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--primary);
+  text-decoration: none;
+}
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+}
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.latest__posts {
+  font-size: 20px;
+  padding-block: 10px;
+}
+
+/* Cards */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-main {
+  margin: 50px;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button,
+.btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+button:hover,
+.btn:hover {
+  opacity: 0.9;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+/* Post Styles */
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+.post-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.post-footer {
+  margin-top: 15px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  background: #ddd;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+.alert {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.success-alert {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error-alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  animation: fadeIn 0.4s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.success-alert {
+  background-color: #e7fbe9;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.error-alert {
+  background-color: #fde2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-page {
+  max-width: 600px;
+  margin: 80px auto;
+  background: var(--white);
+  padding: 40px 50px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.error-page h1 {
+  font-size: 2.4rem;
+  color: #dc2626;
+  margin-bottom: 15px;
+}
+
+.error-page p {
+  font-size: 1.1rem;
+  color: var(--gray);
+  margin-bottom: 25px;
+}
+
+.error-page a {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.error-page a:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+button,
+.btn {
+  transition: 0.2s ease;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.card {
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 600px) {
+  .error-page {
+    margin: 40px 15px;
+    padding: 25px;
+  }
+
+  .error-page h1 {
+    font-size: 2rem;
+  }
+
+  .nav-links a {
+    margin-left: 12px;
+  }
+}
+
+.message-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  border: 1px solid transparent;
+  animation: slideDown 0.35s ease-out;
+}
+
+.success-alert {
+  background-color: #e7fbe9;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.error-alert {
+  background-color: #fde2e2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- MAIN CARD ---------- */
+.card-main {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  max-width: 850px;
+  margin: auto;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- TITLES ---------- */
+.post-title {
+  color: #0d6efd;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.post-date {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* ---------- POST CONTENT ---------- */
+.post-content {
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  border-radius: 30px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-like {
+  background: #ffe5e5;
+  color: #d10000;
+}
+.btn-like:hover {
+  background: #ffcccc;
+}
+
+.btn-edit {
+  background: #ffc107;
+  color: #000;
+}
+.btn-edit:hover {
+  background: #ffca2c;
+}
+
+/* Delete */
+.btn-delete {
+  background: #dc3545;
+  color: #fff;
+}
+.btn-delete:hover {
+  background: #b02a37;
+}
+
+.btn-cancel {
+  background: #6c757d;
+  color: #fff;
+}
+.btn-cancel:hover {
+  background: #5a6268;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #0b5ed7;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.comment-box {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #0d6efd;
+}
+
+.comment-author {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.no-comments {
+  color: #6c757d;
+}
+
+.comment-form textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  resize: vertical;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-card {
+  padding: 20px;
+}
+
+.user-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.avatar-placeholder {
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.follow-btn {
+  margin-top: 15px;
+}
+.hidden {
+  display: none;
+}
+
+.post-actions .btn {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  margin-top: 5px;
+}

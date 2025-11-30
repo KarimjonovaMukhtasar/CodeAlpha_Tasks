@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+  <!-- <% if (message) { %>
+    <div class="alert success">
+        <%= message %>
+    </div>
+<% } %> -->
+<% if (message) { %>
+  <script>
+    alert("<%= message %>");
+  </script>
+<% } %>
+  <link rel="stylesheet" href="/css/style.css">
+  <title><%= post.title %></title>
+</head>
+
+<body class="container py-4">
+
+  <%- include('../partials/navbar'); %>
+
+  <main class="mt-4">
+
+    <div class="card-main">
+
+      <h1 class="post-title"><%= post.title %></h1>
+      <p class="post-date">Posted on <%= new Date(post.created_at).toLocaleDateString() %></p>
+
+      <div class="post-content">
+        <%= post.content %>
+      </div>
+
+      <div class="action-buttons">
+
+        <form action="/posts/<%= post.id %>/like" method="POST">
+          <button class="btn btn-like">❤️ Like (<%= post.likes %>)</button>
+        </form>
+
+        <a href="/posts/<%= post.id %>/edit" class="btn btn-edit">✏️ Edit</a>
+
+        <form action="/posts/<%= post.id %>/delete" method="POST"
+          onsubmit="return confirm('Are you sure to delete this post permanently?');">
+          <button class="btn btn-delete">🗑 Delete</button>
+        </form>
+
+      </div>
+
+      <hr>
+
+      <h3>Comments</h3>
+
+      <% if (post.comments.length > 0) { %>
+        <% post.comments.forEach(c => { %>
+          <div class="comment-box">
+            <p class="comment-author"><%= c.author.username %></p>
+            <p><%= c.content %></p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p class="no-comments">No comments yet</p>
+      <% } %>
+
+      <form action="/posts/<%= post.id %>/comments" method="POST" class="comment-form">
+        <textarea name="comment" placeholder="Write a comment..."></textarea>
+        <button class="btn btn-primary">Add Comment</button>
+      </form>
+
+    </div>
+
+  </main>
+
+  <%- include('../partials/footer'); %>
+
+</body>
+</html>

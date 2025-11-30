@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+    <body>
+        <%- include('partials/navbar') %>
+            <main class="container">
+                <h3 class="latest__posts">Latest Posts</h3>
+                <% if (posts.length===0) { %>
+                    <p>No posts yet. Be the first to share something!</p>
+                    <% } %>
+
+                        <% posts.forEach(post=> { %>
+                            <div class="card">
+                                <div class="post-header">
+                                    <span>
+                                        Posted by <a href="/users/<%= post.author.username %>">@<%= post.author.username
+                                                %></a>
+                                    </span>
+                                    <span>
+                                        <%= new Date(post.created_at).toLocaleDateString() %>
+                                    </span>
+                                </div>
+                                <h2 class="post-title">
+                                    <a href="/posts/<%= post.id %>" style="text-decoration:none; color:inherit;">
+                                        <%= post.title %>
+                                    </a>
+                                </h2>
+                                <% if(post.description) { %>
+                                    <p style="color: #666; margin-bottom: 10px;"><em>
+                                            <%= post.description %>
+                                        </em></p>
+                                    <% } %>
+                                        <p>
+                                            <%= post.content.substring(0, 150) %>...
+                                        </p>
+                                        <div class="post-actions">
+                                            <form action="/posts/<%= post.id %>/like" method="POST"
+                                                style="display:inline;">
+                                                <button type="submit" class="btn btn-like">❤️ Like</button>
+                                            </form>
+                                            <button type="button" class="btn btn-comment"
+                                                onclick="document.getElementById('comment-form-<%= post.id %>').classList.toggle('hidden')">
+                                                💬 Comment
+                                            </button>
+                                            <a href="/posts/<%= post.id %>" class="btn btn-read-more">Read More</a>
+
+                                            <form id="comment-form-<%= post.id %>"
+                                                action="/posts/<%= post.id %>/comments" method="POST"
+                                                class="hidden comment-form">
+                                                <textarea name="comment" placeholder="Write a comment..."
+                                                    required></textarea>
+                                                <button type="submit" class="btn btn-submit-comment">Submit</button>
+                                            </form>
+                                        </div>
+                            </div>
+                            <% }) %>
+            </main>
+            <%- include('partials/footer') %>
+    </body>
+
+</html>
+
+</body>
+
+</html>

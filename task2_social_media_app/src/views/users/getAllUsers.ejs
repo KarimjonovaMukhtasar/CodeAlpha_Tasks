@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <% if (message) { %>
+        <div class="alert success">
+            <%= message %>
+        </div>
+    <% } %>
+    <main class="container">
+        <h1>All Users</h1>
+        <p style="color: gray;">Browse and follow people</p>
+        <br>
+        <div class="users-list">
+            <% users.forEach(u => { %>
+                <div class="card user-card">
+                    <div class="user-card-header">
+                        <div class="avatar-placeholder">
+                            <%= u.first_name ? u.first_name[0] : 'U' %>
+                        </div>
+                        <div>
+                            <h3>
+                                <a href="/users/<%= u.username %>">
+                                    <%= u.first_name || '' %> <%= u.last_name || '' %>
+                                </a>
+                            </h3>
+                            <p style="color: gray;">@<%= u.username %></p>
+                        </div>
+                    </div>
+                    <div class="stats small">
+                        <span><strong><%= u.posts?.length || 0 %></strong> Posts</span>
+                        <span><strong><%= u.followers?.length || 0 %></strong> Followers</span>
+                        <span><strong><%= u.following?.length || 0 %></strong> Following</span>
+                    </div>
+                    <% if (currentUser && currentUser.id !== u.id) { %>
+                        <div class="follow-btn">
+                            <% if (u.isFollowing) { %>
+                                <form action="/users/<%= u.username %>/unfollow" method="POST">
+                                    <button class="btn-outline">Unfollow</button>
+                                </form>
+                            <% } else { %>
+                                <form action="/users/<%= u.username %>/follow" method="POST">
+                                    <button>Follow</button>
+                                </form>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
